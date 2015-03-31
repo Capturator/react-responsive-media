@@ -20,10 +20,10 @@
     "responsive design",
     "media queries"
   ],
-  "author": {
+  "author": [
     "Marco Loche <marco@marcoloche.com> (www.marcoloche.com)",
     "Antdrea Moretti <axyzxp@gmail.com>"
-  }
+  ],
   "readmeFilename": "README.md",
   "license": {
     "type": "MIT",
