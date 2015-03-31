@@ -48,7 +48,6 @@ var ResponsiveContainer = React.createClass({
         return prev;
       }, {})
     });
-    console.log(this.state);
   },
 
   render: function render() {
