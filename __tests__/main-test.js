@@ -1,10 +1,10 @@
 // __tests__/main-test.js
-jest.dontMock('../src/responsive-container.js');
+jest.dontMock('../index');
 
 describe('ResponsiveContainer', function () {
     var container;
     beforeEach(function () {
-        container = require('../src/responsive-container.js');
+        container = require('../index');
     });
 
     afterEach(function () {
