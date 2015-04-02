@@ -2,16 +2,26 @@
   "name": "react-responsive-media",
   "version": "0.0.0",
   "description": "A React Component to manage the behavior of your Responsive Application",
+  "homepage": "https://github.com/capturator/react-responsive-media",
+  "author": [
+    "Marco Loche <marco@marcoloche.com> (www.marcoloche.com)",
+    "Antdrea Moretti <axyzxp@gmail.com>"
+  ],
+  "license": {
+    "type": "MIT",
+    "url": "http://marco-loche.mit-license.org/"
+  },
+  "readmeFilename": "README.md",
   "main": "index.js",
   "devDependencies": {
     "babel": "^4.7.16",
-    "babelify": "^5.0.4",
-    "browserify": "^9.0.3",
     "flog": "0.0.1",
-    "jest-cli": "^0.1.18"
+    "jest-cli": "*",
+    "react": "^0.12",
+    "react-tools": "0.12"
   },
   "scripts": {
-    "test": "./node_modules/.bin/jest",
+    "test": "jest",
     "build": "./node_modules/.bin/babel src --out-dir dist"
   },
   "repository": {
@@ -24,17 +34,11 @@
     "responsive design",
     "media queries"
   ],
-  "author": [
-    "Marco Loche <marco@marcoloche.com> (www.marcoloche.com)",
-    "Antdrea Moretti <axyzxp@gmail.com>"
-  ],
-  "readmeFilename": "README.md",
-  "license": {
-    "type": "MIT",
-    "url": "http://marco-loche.mit-license.org/"
-  },
   "bugs": {
     "url": "https://github.com/capturator/react-responsive-media/issues"
   },
-  "homepage": "https://github.com/capturator/react-responsive-media"
+  "jest": {
+    "scriptPreprocessor": "<rootDir>/test/preprocessor.js",
+    "unmockedModulePathPatterns": ["<rootDir>/node_modules/react"]
+  }
 }
