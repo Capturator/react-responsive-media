@@ -34,9 +34,9 @@ function breakPoints(bp) {
 
 // [1,2,3,4] -> [[1,2], [2,3], [3,4]]
 function couples(arr) {
-  return (arr.length <= 2)
-    ? [arr]
-    : [[arr[0], arr[1]]].concat(couples(arr.slice(1)));
+  return (arr.length <= 2) ?
+    [arr] :
+    [[arr[0], arr[1]]].concat(couples(arr.slice(1)));
 }
 
 // [1,2,3,4] -> [[0,1], [1,2], [2,3], [3,4], [4,Infinity]]
@@ -46,11 +46,11 @@ function mqSteps(arr) {
 
 function toMqStrings(arr) {
   return arr.map(el => {
-    return (el[0] === 0)
-      ? "(max-width: " + el[1] + "px)"
-      : (el[1] === Infinity)
-        ? "(min-width: " + (el[0] + 1) + "px)"
-        : "(min-width: " + (el[0] + 1) + "px) and (max-width: " + el[1] + "px)";
+    return (el[0] === 0) ?
+    "(max-width: " + el[1] + "px)" :
+      (el[1] === Infinity) ?
+      "(min-width: " + (el[0] + 1) + "px)" :
+      "(min-width: " + (el[0] + 1) + "px) and (max-width: " + el[1] + "px)";
   });
 }
 

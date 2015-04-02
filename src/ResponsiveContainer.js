@@ -10,7 +10,7 @@ var ResponsiveContainer = React.createClass({
 
     return {
       isOn: Object.keys(this.bp)
-        .reduce(function(prev, next, index, array) {
+        .reduce(function (prev, next, index, array) {
           if (index === array.length) {
             prev[next] = true;
           } else {
@@ -19,9 +19,9 @@ var ResponsiveContainer = React.createClass({
           return prev;
         }, {})
     };
- },
+  },
 
- componentDidMount: function () {
+  componentDidMount: function () {
     this.updateMediaQueries();
     var mm = this.mm;
     var bp = this.bp;
@@ -31,26 +31,25 @@ var ResponsiveContainer = React.createClass({
         this.updateMediaQueries();
       });
     });
- },
+  },
 
- updateMediaQueries: function () {
+  updateMediaQueries: function () {
     var mm = this.mm;
     var bp = this.bp;
 
     this.setState({
-      isOn: Object.keys(this.bp)
-        .reduce((prev, next) => {
+      isOn: Object.keys(this.bp).reduce((prev, next) => {
           prev[next] = mm(bp[next]).matches;
           return prev;
         }, {})
     });
- },
+  },
 
- render: function () {
+  render: function () {
     return cloneWithProps(React.Children.only(this.props.children), {
       isOn: this.state.isOn
     });
- }
+  }
 });
 
 module.exports = ResponsiveContainer;
