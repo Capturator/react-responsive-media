@@ -1,1 +1,1 @@
-module.exports = require('./dist/ResponsiveContainer"');
+module.exports = require('./dist/ResponsiveContainer');

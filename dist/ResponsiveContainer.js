@@ -2,7 +2,7 @@
 
 var React = require("react");
 var cloneWithProps = require("react/lib/cloneWithProps");
-var breakPoints = require("./lib/breakpoints");
+var MQ = require("mediaquery");
 
 var ResponsiveContainer = React.createClass({
   displayName: "ResponsiveContainer",
@@ -10,14 +10,14 @@ var ResponsiveContainer = React.createClass({
   getInitialState: function getInitialState() {
     this.mm = window.matchMedia;
 
-    this.bp = breakPoints(this.props.bp);
+    this.mq = MQ.asArray(this.props.mq);
 
     return {
-      isOn: Object.keys(this.bp).reduce(function (prev, next, index, array) {
+      currentMedia: this.mq.reduce(function (prev, next, index, array) {
         if (index === array.length) {
-          prev[next] = true;
+          prev[next[0]] = true;
         } else {
-          prev[next] = false;
+          prev[next[0]] = false;
         }
         return prev;
       }, {})
@@ -29,10 +29,10 @@ var ResponsiveContainer = React.createClass({
 
     this.updateMediaQueries();
     var mm = this.mm;
-    var bp = this.bp;
+    var mq = this.mq;
 
-    Object.keys(bp).forEach(function (mq) {
-      mm(bp[mq]).addListener(function () {
+    Object.keys(mq).forEach(function (q) {
+      mm(mq[q]).addListener(function () {
         _this.updateMediaQueries();
       });
     });
@@ -40,11 +40,11 @@ var ResponsiveContainer = React.createClass({
 
   updateMediaQueries: function updateMediaQueries() {
     var mm = this.mm;
-    var bp = this.bp;
+    var mq = this.mq;
 
     this.setState({
-      isOn: Object.keys(this.bp).reduce(function (prev, next) {
-        prev[next] = mm(bp[next]).matches;
+      currentMedia: this.mq.reduce(function (prev, next) {
+        prev[next[0]] = mm(next[1]).matches;
         return prev;
       }, {})
     });
@@ -52,7 +52,7 @@ var ResponsiveContainer = React.createClass({
 
   render: function render() {
     return cloneWithProps(React.Children.only(this.props.children), {
-      isOn: this.state.isOn
+      currentMedia: this.state.currentMedia
     });
   }
 });

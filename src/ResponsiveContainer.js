@@ -6,7 +6,7 @@ var ResponsiveContainer = React.createClass({
   getInitialState: function () {
     this.mm = window.matchMedia;
 
-    this.mq = MQ.asArr(this.props.mq);
+    this.mq = MQ.asArray(this.props.mq);
 
     return {
       currentMedia: this.mq
