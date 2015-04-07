@@ -39,6 +39,11 @@
   },
   "jest": {
     "scriptPreprocessor": "<rootDir>/test/preprocessor.js",
-    "unmockedModulePathPatterns": ["<rootDir>/node_modules/react"]
+    "unmockedModulePathPatterns": [
+      "<rootDir>/node_modules/react"
+    ]
+  },
+  "dependencies": {
+    "mediaquery": "0.0.3"
   }
 }

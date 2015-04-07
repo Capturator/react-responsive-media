@@ -1,20 +1,20 @@
 var React = require('react');
 var cloneWithProps = require('react/lib/cloneWithProps');
-var breakPoints = require('./lib/breakpoints');
+var MQ = require('mediaquery');
 
 var ResponsiveContainer = React.createClass({
   getInitialState: function () {
     this.mm = window.matchMedia;
 
-    this.bp = breakPoints(this.props.bp);
+    this.mq = MQ.asArr(this.props.mq);
 
     return {
-      isOn: Object.keys(this.bp)
-        .reduce(function(prev, next, index, array) {
+      currentMedia: this.mq
+        .reduce((prev, next, index, array) => {
           if (index === array.length) {
-            prev[next] = true;
+            prev[next[0]] = true;
           } else {
-            prev[next] = false;
+            prev[next[0]] = false;
           }
           return prev;
         }, {})
@@ -24,10 +24,10 @@ var ResponsiveContainer = React.createClass({
  componentDidMount: function () {
     this.updateMediaQueries();
     var mm = this.mm;
-    var bp = this.bp;
+    var mq = this.mq;
 
-    Object.keys(bp).forEach(mq => {
-      mm(bp[mq]).addListener(() => {
+    Object.keys(mq).forEach(q => {
+      mm(mq[q]).addListener(() => {
         this.updateMediaQueries();
       });
     });
@@ -35,12 +35,12 @@ var ResponsiveContainer = React.createClass({
 
  updateMediaQueries: function () {
     var mm = this.mm;
-    var bp = this.bp;
+    var mq = this.mq;
 
     this.setState({
-      isOn: Object.keys(this.bp)
+      currentMedia: this.mq
         .reduce((prev, next) => {
-          prev[next] = mm(bp[next]).matches;
+          prev[next[0]] = mm(next[1]).matches;
           return prev;
         }, {})
     });
@@ -48,7 +48,7 @@ var ResponsiveContainer = React.createClass({
 
  render: function () {
     return cloneWithProps(React.Children.only(this.props.children), {
-      isOn: this.state.isOn
+      currentMedia: this.state.currentMedia
     });
  }
 });
