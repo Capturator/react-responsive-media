@@ -13,6 +13,9 @@
   },
   "readmeFilename": "README.md",
   "main": "index.js",
+  "dependencies": {
+    "mediaquery": "0.0.3"
+  },
   "devDependencies": {
     "babel": "^4.7.16",
     "flog": "0.0.1",
@@ -42,8 +45,5 @@
     "unmockedModulePathPatterns": [
       "<rootDir>/node_modules/react"
     ]
-  },
-  "dependencies": {
-    "mediaquery": "0.0.3"
   }
 }
