@@ -19,9 +19,9 @@ var ResponsiveContainer = React.createClass({
           return prev;
         }, {})
     };
- },
+  },
 
- componentDidMount: function () {
+  componentDidMount: function () {
     this.updateMediaQueries();
     var mm = this.mm;
     var mq = this.mq;
@@ -31,9 +31,9 @@ var ResponsiveContainer = React.createClass({
         this.updateMediaQueries();
       });
     });
- },
+  },
 
- updateMediaQueries: function () {
+  updateMediaQueries: function () {
     var mm = this.mm;
     var mq = this.mq;
 
@@ -44,13 +44,13 @@ var ResponsiveContainer = React.createClass({
           return prev;
         }, {})
     });
- },
+  },
 
- render: function () {
+  render: function () {
     return cloneWithProps(React.Children.only(this.props.children), {
       currentMedia: this.state.currentMedia
     });
- }
+  }
 });
 
 module.exports = ResponsiveContainer;
