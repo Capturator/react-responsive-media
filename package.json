@@ -1,6 +1,6 @@
 {
   "name": "react-responsive-media",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "A React Component to manage the behavior of your Responsive Application",
   "homepage": "https://github.com/capturator/react-responsive-media",
   "author": [
@@ -17,11 +17,10 @@
     "mediaquery": "0.0.3"
   },
   "devDependencies": {
-    "babel": "^4.7.16",
+    "babel": "5.8.23",
     "flog": "0.0.1",
     "jest-cli": "*",
-    "react": "^0.12",
-    "react-tools": "0.12"
+    "react": "^0.14"
   },
   "scripts": {
     "test": "jest",
