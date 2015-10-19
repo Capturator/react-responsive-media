@@ -26,12 +26,12 @@ var _mediaquery2 = _interopRequireDefault(_mediaquery);
 
 function Responsive(Element) {
   return (function (_Component) {
-    _inherits(ResponsiveContainer, _Component);
+    _inherits(ResponsiveComponent, _Component);
 
-    function ResponsiveContainer(props) {
-      _classCallCheck(this, ResponsiveContainer);
+    function ResponsiveComponent(props) {
+      _classCallCheck(this, ResponsiveComponent);
 
-      _get(Object.getPrototypeOf(ResponsiveContainer.prototype), 'constructor', this).call(this);
+      _get(Object.getPrototypeOf(ResponsiveComponent.prototype), 'constructor', this).call(this);
       var mq = _mediaquery2['default'].asArray(props.mq);
 
       this.state = {
@@ -48,7 +48,7 @@ function Responsive(Element) {
       };
     }
 
-    _createClass(ResponsiveContainer, [{
+    _createClass(ResponsiveComponent, [{
       key: 'componentDidMount',
       value: function componentDidMount() {
         var _this = this;
@@ -85,7 +85,7 @@ function Responsive(Element) {
       }
     }]);
 
-    return ResponsiveContainer;
+    return ResponsiveComponent;
   })(_react.Component);
 }
 
