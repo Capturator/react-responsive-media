@@ -7,9 +7,14 @@ function Responsive(Element) {
       super();
       const mq = MQ.asArray(props.mq);
 
+      const isTouch = Modernizr
+              ? Modernizr.touch
+              // inline Modernizr check
+              : (('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch);
       this.state = {
         mm: window.matchMedia,
         mq: mq,
+        isTouch: isTouch,
         currentMedia: mq
           .reduce((prev, next, index, array) => {
             if (index === array.length) {
@@ -46,7 +51,11 @@ function Responsive(Element) {
     }
 
     render() {
-      return <Element {...this.props} currentMedia={this.state.currentMedia} />;
+      return (
+        <Element {...this.props}
+          isTouch={this.state.isTouch}
+          currentMedia={this.state.currentMedia} />
+      );
     }
   };
 }

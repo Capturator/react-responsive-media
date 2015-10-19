@@ -34,9 +34,13 @@ function Responsive(Element) {
       _get(Object.getPrototypeOf(ResponsiveComponent.prototype), 'constructor', this).call(this);
       var mq = _mediaquery2['default'].asArray(props.mq);
 
+      var isTouch = Modernizr ? Modernizr.touch
+      // inline Modernizr check
+      : 'ontouchstart' in window || window.DocumentTouch && document instanceof DocumentTouch;
       this.state = {
         mm: window.matchMedia,
         mq: mq,
+        isTouch: isTouch,
         currentMedia: mq.reduce(function (prev, next, index, array) {
           if (index === array.length) {
             prev[next[0]] = true;
@@ -81,7 +85,9 @@ function Responsive(Element) {
     }, {
       key: 'render',
       value: function render() {
-        return _react2['default'].createElement(Element, _extends({}, this.props, { currentMedia: this.state.currentMedia }));
+        return _react2['default'].createElement(Element, _extends({}, this.props, {
+          isTouch: this.state.isTouch,
+          currentMedia: this.state.currentMedia }));
       }
     }]);
 
